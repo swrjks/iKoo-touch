@@ -1,0 +1,30 @@
+package com.sudocode.ikoo
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.lifecycle.lifecycleScope
+import com.sudocode.ikoo.core.ai.AIEngineRegistry
+import com.sudocode.ikoo.core.vision.VisionEngineRegistry
+import com.sudocode.ikoo.gallery_ai.GemmaLiteRtVisionEngine
+import com.sudocode.ikoo.ui.IKooApp
+import com.sudocode.ikoo.ui.theme.IKooTheme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        VisionEngineRegistry.setActive(GemmaLiteRtVisionEngine())
+        lifecycleScope.launch(Dispatchers.IO) {
+            AIEngineRegistry.initialize(applicationContext)
+        }
+        setContent {
+            IKooTheme {
+                IKooApp()
+            }
+        }
+    }
+}

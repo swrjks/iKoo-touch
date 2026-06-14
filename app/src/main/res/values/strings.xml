@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">iKoo</string>
+    <string name="ikoo_accessibility_service_label">iKoo Screen Intent Monitor</string>
+    <string name="ikoo_accessibility_service_summary">Detects visible text changes on device.</string>
+    <string name="ikoo_accessibility_service_description">iKoo reads visible screen text to detect intent locally and log package, text, and timestamp for development.</string>
+</resources>
